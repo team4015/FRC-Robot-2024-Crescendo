@@ -1,10 +1,10 @@
-package frc.robot.commands.drivetrain;
+package frc.robot.commands.driver;
 
 import frc.robot.Robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
 
-public class Drive extends Command
+public class HighSpeed extends Command
 {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private Robot robot;
@@ -17,10 +17,9 @@ public class Drive extends Command
   
   
   
-  public Drive(Robot robot)
+  public HighSpeed(Robot robot)
   {
     this.robot = robot;
-    addRequirements(robot.drivetrain);
     
     // Use addRequirements() here to declare subsystem dependencies.
     
@@ -31,27 +30,27 @@ public class Drive extends Command
   @Override
   public void initialize()
   {
-    robot.drivetrain.stopMotors();
+    
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute()
   {
-    robot.drivetrain.moveMotors(robot.driver.getThrottle(),robot.driver.getSteer());
+    robot.driver.useHighSpeed();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted)
   {
-    robot.drivetrain.stopMotors();
+    
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished()
   {
-    return false;
+    return true;
   }
 }

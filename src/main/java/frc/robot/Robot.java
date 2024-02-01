@@ -15,6 +15,7 @@ package frc.robot;
 
 //import subsystems here
 //import frc.robot.commands.ExampleSubsytem.*;
+import frc.robot.commands.drivetrain.*;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -31,6 +32,8 @@ public class Robot {
   //SUBSYSTEMS//
   //public ExampleSubsystem examplesubsystem;
 
+  public Drivetrain drivetrain;
+
   //declare all subsystems here
 
   //CONSTRUCTORS//
@@ -39,6 +42,7 @@ public class Robot {
   {
     //instantiate all subsystems
     //examplesubsystem = new ExampleSubsystem();
+    drivetrain = new Drivetrain();
 
     //instantiate Controls
     operator = new Operator(this);
@@ -52,8 +56,10 @@ public class Robot {
   private void initialize(){
     //initial methods
     //examplesubsystem.initialMethod();
+    drivetrain.stopMotors();
   }
   private void setDefaultCommands(){
+    drivetrain.setDefaultCommand(new Drive(this));
     //examplesubssytem.setDefaultCommand(new ExampleSubsystem(this));
   }
   //METHODS//
